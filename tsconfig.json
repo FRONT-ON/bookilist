@@ -1,0 +1,32 @@
+{
+    "include": [
+        "src/**/*"
+    ],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "rootDir": ".",
+        "target": "es2020",
+        "skipLibCheck": true,
+        "allowJs": true,
+        "esModuleInterop": true,
+        "strict": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "removeComments": true,
+        "jsx": "react-jsx",
+        "paths": {
+            "@api/*": ["src/api/*"],
+            "@assets/*": ["src/assets/*"],
+            "@atoms/*": ["src/shared/atoms/*"],
+            "@molecules/*": ["src/shared/molecules/*"],
+            "@organisms/*": ["src/shared/organisms/*"],
+            "@harness/*": ["src/harness/*"],
+            "@models/*": ["src/models/*"],
+            "@pages/*": ["src/pages/*"],
+            "@store/*": ["src/store/*"],
+            "@styles/*": ["src/styles/*"],
+            "@utils/*": ["src/shared/ytils/*"],
+        } 
+    }
+}
