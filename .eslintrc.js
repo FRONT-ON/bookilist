@@ -5,16 +5,29 @@ const env = {
 	node: true,
 };
 
+const extendsCommon = [
+	'eslint:recommended',
+	'plugin:react/recommended',
+	'prettier',
+];
+
+const extendsTypescript = [
+	'plugin:@typescript-eslint/eslint-recommended',
+	'plugin:@typescript-eslint/recommended',
+	'plugin:@typescript-eslint/recommended-requiring-type-checking'
+];
+
+const rules = {
+	'@typescript-eslint/no-unsafe-assignment': 'off',
+	'@typescript-eslint/no-unsafe-member-access': 'off',
+	'@typescript-eslint/no-unsafe-returns': 'off',
+	'react/jsx-uses-react': 'off',
+	'react/react-in-jsx-scope': 'off',
+}
+
 module.exports = {
 	env,
-	extends: [
-		'eslint:recommended',
-		'plugin:react/recommended',
-		'plugin:@typescript-eslint/eslint-recommended',
-		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/recommended-requiring-type-checking',
-		'prettier',
-	],
+	extends: extendsCommon,
 	parser: '@babel/eslint-parser',
 	root: true,
 	parserOptions: {
@@ -22,20 +35,16 @@ module.exports = {
 	},
 	overrides: [
 		{
-			parser: 'typescript-eslint/parser',
+			parser: '@typescript-eslint/parser',
 			files: ['*.ts', '*.tsx'],
 			env,
 			parserOptions: {
 				project: './tsconfig.json',
 			},
+			extends: [...extendsTypescript, ...extendsCommon],
+			plugins: ['prettier', 'react', '@typescript-eslint', 'react-hooks', 'import'],
+			rules
 		},
 	],
-	plugins: ['prettier', 'react', '@typescript-eslint', 'react-hooks', 'import'],
-	rules: {
-		'@typescript-eslint/no-unsafe-assignment': 'off',
-		'@typescript-eslint/no-unsafe-member-access': 'off',
-		'@typescript-eslint/no-unsafe-returns': 'off',
-		'react/jsx-uses-react': 'off',
-		'react/react-in-jsx-scope': 'off',
-	},
+	rules,
 };

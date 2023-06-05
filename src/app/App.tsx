@@ -1,5 +1,11 @@
-import { Typography } from '@mui/material';
+import { Router } from '@harness/navigation/Router';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '@styles/theme';
 
 export const App = () => {
-	return <Typography>Здесь будет приложенька</Typography>;
+	return (
+		<ThemeProvider theme={theme}>
+			<Router />
+		</ThemeProvider>
+	);
 };
