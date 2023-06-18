@@ -1,11 +1,13 @@
 import { Box as MuiBox, Typography as MuiTypography, styled } from '@mui/material';
 import { memo } from 'react';
 import { Container } from '@atoms/Container';
+import { BookCarousel } from '@pages/Home/BookCarousel/BookCarousel';
 
 const Box = styled(MuiBox)(() => ({
 	height: '100%',
 	position: 'relative',
-	top: '40%',
+	// top: '40%',
+	top: '7%',
 }));
 
 const Typography = styled(MuiTypography)(({ theme }) => ({
@@ -25,6 +27,10 @@ export const Home = memo(() => {
 		<Box>
 			<Container>
 				<Typography variant="h1">Your online library of favorite books</Typography>
+			</Container>
+			<Container padding={'20% 1.9% 3% 1.9%'}>
+				<BookCarousel filter={'books'} text={'Bestsellers'} />
+				<BookCarousel filter={'new'} text={'New books'} />
 			</Container>
 		</Box>
 	);

@@ -3,14 +3,15 @@ import { ReactNode } from 'react';
 
 interface Props {
 	children: ReactNode;
+	padding?: string;
 }
 
-const AdoptedContainer = styled(MuiContainer)(() => ({
+const AdoptedContainer = styled(MuiContainer)(({ padding }: { padding?: string }) => ({
 	[`&.${containerClasses.root}`]: {
-		padding: '0 5%',
+		padding: padding ? `${padding}` : '0 5%',
 	},
 }));
 
-export const Container = ({ children }: Props) => {
-	return <AdoptedContainer maxWidth="xl">{children}</AdoptedContainer>;
+export const Container = ({ children, padding }: Props) => {
+	return <AdoptedContainer maxWidth="xl" padding={padding}>{children}</AdoptedContainer>;
 };
