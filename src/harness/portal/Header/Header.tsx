@@ -21,7 +21,7 @@ const Menu = styled(Box)(() => ({
 
 export const Header = memo(() => {
 	return (
-		<AppBar position="fixed" color="transparent">
+		<AppBar position="static" color="transparent">
 			<Container>
 				<Toolbar disableGutters>
 					<Logo />
