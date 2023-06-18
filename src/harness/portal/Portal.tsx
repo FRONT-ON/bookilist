@@ -31,7 +31,7 @@ const PageWrapper = styled(Box, {
 	backgroundColor: theme.palette.secondary.main,
 	backgroundImage: getPageBackgroundImage(location),
 	backgroundRepeat: 'no-repeat',
-	backgroundSize: 'cover',
+	backgroundSize: '100% 100%',
 }));
 
 const Workspace = styled(Box)(() => ({
@@ -39,14 +39,20 @@ const Workspace = styled(Box)(() => ({
 	top: 120,
 }));
 
+const FullPageWrapper = styled(Box)(({ theme }) => ({
+	height: '312vh',
+	backgroundColor: theme.palette.secondary.dark,
+}));
+
 export const Portal = memo(({ children }: Props) => {
 	const location = useLocation();
-
 	return (
-		<PageWrapper location={location.pathname}>
-			<Header />
-			<Workspace>{children}</Workspace>
-		</PageWrapper>
+		<FullPageWrapper>
+			<PageWrapper location={location.pathname}>
+				<Header />
+				<Workspace>{children}</Workspace>
+			</PageWrapper>
+		</FullPageWrapper>
 	);
 });
 
