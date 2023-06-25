@@ -1,10 +1,9 @@
 import { Card, styled, Typography, Typography as MuiTypography } from '@mui/material';
 import { memo } from 'react';
-import { BookType } from '../../mock/booksMock';
+import { Book as BookType } from '../../mock/booksMock';
 
 const BackBook = styled(Card)(({ theme }) => ({
 	background: theme.palette.secondary.main,
-	// filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
 	boxShadow: theme.shadows[3],
 	height: '350px',
 	width: '245px',

@@ -1,17 +1,14 @@
-import { Container as MuiContainer, containerClasses, styled } from '@mui/material';
-import { ReactNode } from 'react';
+import {Container as MuiContainer, styled, ContainerProps} from '@mui/material';
 
-interface Props {
-	children: ReactNode;
-	padding?: string;
-}
-
-const AdoptedContainer = styled(MuiContainer)(({ padding }: { padding?: string }) => ({
-	[`&.${containerClasses.root}`]: {
-		padding: padding ? `${padding}` : '0 5%',
-	},
+const AdoptedContainer = styled(MuiContainer)(() => ({
+    '&.defaultContainer': {
+        padding: '0 5%',
+    },
+    '&.carouselContainer': {
+        padding: '20% 1.9% 3% 1.9%'
+    },
 }));
 
-export const Container = ({ children, padding }: Props) => {
-	return <AdoptedContainer maxWidth="xl" padding={padding}>{children}</AdoptedContainer>;
+export const Container = ({children, className}: ContainerProps) => {
+    return <AdoptedContainer className={className} maxWidth="xl">{children}</AdoptedContainer>;
 };

@@ -24,9 +24,11 @@ const CarouselText = styled(MuiTypography)(({ theme }) => ({
 	flexDirection: 'row',
 	justifyContent: 'space-between',
 	alignItems: 'center',
-
 	padding: '0 6% 50px 0',
-
+	fontFamily: theme.typography,
+	maxWidth: '500',
+	color: theme.palette.primary.main,
+	fontWeight: '500',
 	'& .seeAll': {
 		fontSize: '21px',
 		[theme.breakpoints.down('md')]: {
@@ -36,20 +38,15 @@ const CarouselText = styled(MuiTypography)(({ theme }) => ({
 			fontSize: '15px',
 		},
 	},
-}));
 
-const TypographySection = styled(MuiTypography)(({ theme }) => ({
-	fontSize: '40px',
-	maxWidth: '500',
-	fontFamily: theme.typography,
-	letterSpacing: '0.63',
-	color: theme.palette.primary.main,
-	fontWeight: '500',
-	[theme.breakpoints.down('md')]: {
-		fontSize: '30px',
-	},
-	[theme.breakpoints.down('sm')]: {
-		fontSize: '20px',
+	'& .header': {
+		fontSize: '40px',
+		[theme.breakpoints.down('md')]: {
+			fontSize: '30px',
+		},
+		[theme.breakpoints.down('sm')]: {
+			fontSize: '20px',
+		},
 	},
 }));
 
@@ -59,7 +56,7 @@ export const BookCarousel = memo(({ filter, text }: Props) => {
 	return (
 		<CarouselBox>
 			<CarouselText>
-				<TypographySection>{text}</TypographySection>
+				<span className={'header'}>{text}</span>
 				<Link className="seeAll">See all</Link>
 			</CarouselText>
 			<Carousel books={filteredBooks} />

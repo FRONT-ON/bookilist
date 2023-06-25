@@ -1,10 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { memo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { BookType } from '../../mock/booksMock';
+import { Book as BookType } from '../../mock/booksMock';
 import { Book } from '@molecules/Book';
-import arrowBefore from '@assets/img/arrows/arrowBefore.svg';
-import arrowAfter from '@assets/img/arrows/arrowAfter.svg';
+import arrowCarousel from '@assets/img/arrowCarousel.svg';
 import 'swiper/css';
 import 'swiper/swiper-bundle.css';
 import { Navigation, Swiper as SwiperCore } from 'swiper';
@@ -36,18 +35,20 @@ export const Carousel = memo(({ books }: Props) => {
 	const swiperRef = useRef<SwiperCore | null>(null);
 
 	useEffect(() => {
-		if (navigationPrevRef.current && navigationNextRef.current) {
-			navigationPrevRef.current?.addEventListener('click', () => {
+		if (navigationPrevRef.current) {
+			navigationPrevRef.current.onclick = () => {
 				if (swiperRef.current) {
 					swiperRef.current.slidePrev();
 				}
-			});
+			};
+		}
 
-			navigationNextRef.current?.addEventListener('click', () => {
+		if (navigationNextRef.current) {
+			navigationNextRef.current.onclick = () => {
 				if (swiperRef.current) {
 					swiperRef.current.slideNext();
 				}
-			});
+			};
 		}
 	}, []);
 
@@ -57,16 +58,13 @@ export const Carousel = memo(({ books }: Props) => {
 
 	const slidesPerView = isLargeScreen ? 4 : isMiddleScreen ? 3 : isSmallScreen ? 2 : 1;
 
-	const loopedBooks = [...books, ...books, ...books];
-
 	return (
 		<CarouselBox>
 			<Arrow direction={'before'} className="custom-prev-arrow" ref={navigationPrevRef}>
-				<img src={arrowBefore} alt="Book icon" />
+				<img src={arrowCarousel} alt="Book icon" />
 			</Arrow>
 			<Swiper
 				style={{ height: '360px' }}
-				// centeredSlides={true}
 				direction="horizontal"
 				modules={[Navigation]}
 				className="mySwiper"
@@ -75,16 +73,15 @@ export const Carousel = memo(({ books }: Props) => {
 				centeredSlidesBounds={true}
 				loop={true}
 				onSwiper={(swiper) => (swiperRef.current = swiper)}
-				wrapperComponent={WrapperComponent}
-			>
-				{loopedBooks.map((book, index) => (
+				wrapperComponent={WrapperComponent}>
+				{books.map((book, index) => (
 					<SwiperSlide key={index}>
 						<Book book={book} />
 					</SwiperSlide>
 				))}
 			</Swiper>
 			<Arrow diraction={'after'} className="custom-next-arrow" ref={navigationNextRef}>
-				<img src={arrowAfter} alt="Book icon" />
+				<img src={arrowCarousel} alt="Book icon" style={{ transform: 'rotate(180deg)' }} />
 			</Arrow>
 		</CarouselBox>
 	);
