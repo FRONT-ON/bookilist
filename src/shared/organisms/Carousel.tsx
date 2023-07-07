@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { memo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Book as BookType } from '../../mock/booksMock';
@@ -26,31 +26,16 @@ const Arrow = styled('div')(({ direction }) => ({
 }));
 
 const WrapperComponent = styled('div')(() => ({
-	height: '400px',
+	height: 400,
 }));
 
 export const Carousel = memo(({ books }: Props) => {
-	const navigationPrevRef = useRef<HTMLDivElement>(null);
-	const navigationNextRef = useRef<HTMLDivElement>(null);
 	const swiperRef = useRef<SwiperCore | null>(null);
-
-	useEffect(() => {
-		if (navigationPrevRef.current) {
-			navigationPrevRef.current.onclick = () => {
-				if (swiperRef.current) {
-					swiperRef.current.slidePrev();
-				}
-			};
+	const swiperOnClick = (swipeDirection: string) => {
+		if (swiperRef.current) {
+			swiperRef.current[swipeDirection === 'Next' ? 'slideNext' : 'slidePrev']();
 		}
-
-		if (navigationNextRef.current) {
-			navigationNextRef.current.onclick = () => {
-				if (swiperRef.current) {
-					swiperRef.current.slideNext();
-				}
-			};
-		}
-	}, []);
+	};
 
 	const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
 	const isMiddleScreen = useMediaQuery(theme.breakpoints.up('md'));
@@ -60,11 +45,11 @@ export const Carousel = memo(({ books }: Props) => {
 
 	return (
 		<CarouselBox>
-			<Arrow direction={'before'} className="custom-prev-arrow" ref={navigationPrevRef}>
-				<img src={arrowCarousel} alt="Book icon" />
+			<Arrow direction={'before'} className="custom-prev-arrow">
+				<img src={arrowCarousel} alt="Book icon" onClick={() => swiperOnClick('Prev')} />
 			</Arrow>
 			<Swiper
-				style={{ height: '360px' }}
+				style={{ height: 360 }}
 				direction="horizontal"
 				modules={[Navigation]}
 				className="mySwiper"
@@ -80,8 +65,13 @@ export const Carousel = memo(({ books }: Props) => {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			<Arrow diraction={'after'} className="custom-next-arrow" ref={navigationNextRef}>
-				<img src={arrowCarousel} alt="Book icon" style={{ transform: 'rotate(180deg)' }} />
+			<Arrow direction="after" className="custom-next-arrow">
+				<img
+					src={arrowCarousel}
+					alt="Book icon"
+					style={{ transform: 'rotate(180deg)' }}
+					onClick={() => swiperOnClick('Next')}
+				/>
 			</Arrow>
 		</CarouselBox>
 	);

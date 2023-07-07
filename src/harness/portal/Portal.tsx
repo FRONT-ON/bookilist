@@ -1,6 +1,6 @@
 import { ReactNode, memo } from 'react';
 import { Box, styled } from '@mui/material';
-import backgroundImage from '@assets/img/background.png';
+import backgroundImage2 from '@assets/img/background2.png';
 import { useLocation } from 'react-router-dom';
 import { Header } from './Header/Header';
 
@@ -16,7 +16,7 @@ const getPageBackgroundImage = (location: string) => {
 	const defaultBackgroundStyle = 'none';
 
 	if (location === '/') {
-		return `url(${String(backgroundImage)})`;
+		return `url(${String(backgroundImage2)})`;
 	}
 
 	return defaultBackgroundStyle;
@@ -31,7 +31,7 @@ const PageWrapper = styled(Box, {
 	backgroundColor: theme.palette.secondary.main,
 	backgroundImage: getPageBackgroundImage(location),
 	backgroundRepeat: 'no-repeat',
-	backgroundSize: 'cover',
+	backgroundSize: '100% 100%',
 }));
 
 const Workspace = styled(Box)(() => ({
@@ -39,14 +39,22 @@ const Workspace = styled(Box)(() => ({
 	top: 120,
 }));
 
+const FullPageWrapper = styled(Box)(({ theme }) => ({
+	height: '312vh',
+	backgroundColor: theme.palette.secondary.dark,
+	backgroundSize: '100% 100%',
+	zIndex: '-10',
+}));
+
 export const Portal = memo(({ children }: Props) => {
 	const location = useLocation();
-
 	return (
-		<PageWrapper location={location.pathname}>
-			<Header />
-			<Workspace>{children}</Workspace>
-		</PageWrapper>
+		<FullPageWrapper>
+			<PageWrapper location={location.pathname}>
+				<Header />
+				<Workspace>{children}</Workspace>
+			</PageWrapper>
+		</FullPageWrapper>
 	);
 });
 
