@@ -25,9 +25,9 @@ const CarouselText = styled(MuiTypography)(({ theme }) => ({
 	alignItems: 'center',
 	padding: '0 6% 50px 0',
 	fontFamily: theme.typography,
-	maxWidth: '500',
+	maxWidth: 500,
 	color: theme.palette.primary.main,
-	fontWeight: '500',
+	fontWeight: 500,
 	'& .seeAll': {
 		fontSize: 21,
 		[theme.breakpoints.down('md')]: {

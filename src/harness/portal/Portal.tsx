@@ -1,6 +1,6 @@
 import { ReactNode, memo } from 'react';
 import { Box, styled } from '@mui/material';
-import backgroundImage2 from '@assets/img/background2.png';
+import backgroundImage from '@assets/img/background.png';
 import { useLocation } from 'react-router-dom';
 import { Header } from './Header/Header';
 
@@ -16,7 +16,7 @@ const getPageBackgroundImage = (location: string) => {
 	const defaultBackgroundStyle = 'none';
 
 	if (location === '/') {
-		return `url(${String(backgroundImage2)})`;
+		return `url(${String(backgroundImage)})`;
 	}
 
 	return defaultBackgroundStyle;
@@ -42,8 +42,6 @@ const Workspace = styled(Box)(() => ({
 const FullPageWrapper = styled(Box)(({ theme }) => ({
 	height: '312vh',
 	backgroundColor: theme.palette.secondary.dark,
-	backgroundSize: '100% 100%',
-	zIndex: '-10',
 }));
 
 export const Portal = memo(({ children }: Props) => {
