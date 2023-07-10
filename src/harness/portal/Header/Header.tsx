@@ -1,7 +1,7 @@
 import { Container } from '@atoms/Container';
 import { memo } from 'react';
 import { AppBar as MuiAppBar, Box, Toolbar as MuiToolbar, styled } from '@mui/material';
-import { Logo } from './Logo/Logo';
+import { Logo } from '../Logo/Logo';
 import { Navigation } from './Navigation/Navigation';
 import { AuthenticationMenu } from './AuthenticationMenu/AuthenticationMenu';
 

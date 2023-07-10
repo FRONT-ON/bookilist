@@ -3,6 +3,7 @@ import { Box, styled } from '@mui/material';
 import backgroundImage from '@assets/img/background.png';
 import { useLocation } from 'react-router-dom';
 import { Header } from './Header/Header';
+import { Footer } from '@harness/portal/Footer/Footer';
 
 interface Props {
 	children: ReactNode;
@@ -46,6 +47,7 @@ export const Portal = memo(({ children }: Props) => {
 		<PageWrapper location={location.pathname}>
 			<Header />
 			<Workspace>{children}</Workspace>
+			<Footer />
 		</PageWrapper>
 	);
 });
