@@ -1,6 +1,7 @@
 {
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "backend/**/*"
     ],
     "compilerOptions": {
         "baseUrl": ".",
@@ -16,17 +17,18 @@
         "removeComments": true,
         "jsx": "react-jsx",
         "paths": {
-            "@api/*": ["src/api/*"],
-            "@assets/*": ["src/assets/*"],
-            "@atoms/*": ["src/shared/atoms/*"],
-            "@molecules/*": ["src/shared/molecules/*"],
-            "@organisms/*": ["src/shared/organisms/*"],
-            "@harness/*": ["src/harness/*"],
-            "@models/*": ["src/models/*"],
-            "@pages/*": ["src/pages/*"],
-            "@store/*": ["src/store/*"],
-            "@styles/*": ["src/styles/*"],
-            "@utils/*": ["src/shared/ytils/*"],
+            "@backend/*": ["src/backend/*"],
+            "@api/*": ["src/frontend/api/*"],
+            "@assets/*": ["src/frontend/assets/*"],
+            "@atoms/*": ["src/frontend/shared/atoms/*"],
+            "@molecules/*": ["src/frontend/shared/molecules/*"],
+            "@organisms/*": ["src/frontend/shared/organisms/*"],
+            "@harness/*": ["src/frontend/harness/*"],
+            "@models/*": ["src/frontend/models/*"],
+            "@pages/*": ["src/frontend/pages/*"],
+            "@store/*": ["src/frontend/store/*"],
+            "@styles/*": ["src/frontend/styles/*"],
+            "@utils/*": ["src/frontend/shared/ytils/*"],
         } 
     }
 }

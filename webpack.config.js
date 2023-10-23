@@ -6,7 +6,7 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
-	entry: path.resolve(__dirname, './src/index.tsx'),
+	entry: path.resolve(__dirname, './src/frontend/index.tsx'),
 	mode: 'development',
 	devtool: 'source-map',
 	stats: 'errors-only',
